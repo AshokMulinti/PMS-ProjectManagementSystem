@@ -11,7 +11,7 @@ A web-based Project Management System built with Spring Boot, Spring Security, a
 ## Technologies 
 - **Backend**: Spring Boot, Spring Security, Spring Data JPA 
 - **Frontend**: Thymeleaf, HTML, CSS 
-- **Database**: H2 (default), adaptable to MySQL/PostgreSQL 
+- **Database**: MYSQL
  
 ## Setup Instructions 
 1. **Prerequisites**: Java 17+, Maven, Git 
@@ -34,6 +34,5 @@ A web-based Project Management System built with Spring Boot, Spring Security, a
 ## Usage 
 - **Admin**: Log in with admin credentials to manage resources. 
 - **Users**: Log in to view projects, tasks, and employees. 
+
  
-## License 
-MIT License (or specify your preferred license). 
