@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+        }
+        .btn-update {
+            background: #007bff;
+        }
+        .btn-update:hover {
+            background: #0056b3;
+        }
+        .btn-cancel {
+            background: #dc3545;
+        }
+        .btn-cancel:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Update Task</h1>
+    <form th:action="@{/updateTask}" method="post" th:object="${task}">
+        <input type="hidden" th:field="*{id}"/>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required/>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" th:field="*{description}" required/>
+
+        <label for="status">Status:</label>
+        <select id="status" th:field="*{status}">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" th:field="*{deadline}" required/>
+
+        <label for="employee">Employee:</label>
+        <select id="employee" th:field="*{employee.id}">
+            <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.name}"></option>
+        </select>
+
+        <label for="project">Project:</label>
+        <select id="project" th:field="*{project.id}">
+            <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+        </select>
+
+        <div class="btn-container">
+            <button type="submit" class="btn btn-update">Update</button>
+            <a th:href="@{/getAllTasks}" class="btn btn-cancel">Cancel</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
